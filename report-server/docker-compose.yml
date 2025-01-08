@@ -1,6 +1,5 @@
 services:
   db:
-    user: postgres
     container_name: postgres_database
     image: postgres:16.3
     volumes:
@@ -17,7 +16,6 @@ services:
     image: dpage/pgadmin4:8.6
     volumes:
       - ./pgadmin:/var/lib/pgadmin
-    user: '$UID:$GID'
     ports:
       - "8080:80"
     environment:
