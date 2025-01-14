@@ -17,20 +17,27 @@ interface HeaderOptions {
     showDate?: boolean;
 }
 
+const currentDate: Content = {
+    text: DateFormater.getDDMMMMYYYY(new Date()),
+    alignment: 'right',
+    margin: [20,30],
+    width: 150,
+}
+
 export const headerSection = ( options: HeaderOptions): Content => {
 
     const { title, subTitle, showLogo = true, showDate = true } = options;
 
     const headerLogo: Content = showLogo ? logo : null;
-    const headerDate: Content = showDate ?  {
-        text: DateFormater.getDDMMMMYYYY(new Date()),
-        alignment: 'right',
-        margin: [20, 20, 20, 20]
-        } : null;
-    const headerTitle: Content = title ? { text: title , style: {
-        bold: true,
-        alignment: 'center',
-    } } : null;
+    const headerDate: Content = showDate ?  currentDate : null;
+    const headerTitle: Content = title ? 
+        { 
+            stack: [
+                { text: title, style: 'header' },
+                subTitle ? { text: subTitle, style: 'subheader' } : null
+            ]
+        } 
+        : null;
     
     return {
         columns: [ 
