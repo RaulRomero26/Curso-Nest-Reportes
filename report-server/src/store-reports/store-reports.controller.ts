@@ -8,7 +8,7 @@ export class StoreReportsController {
 
     @Get('order/:orderId')
     async getOrderReport(@Param('orderId') orderId: string,@Res() res: Response) {
-      const pdfDoc = await this.storeReportsService.getOrderByIdReport(orderId);
+      const pdfDoc = await this.storeReportsService.getOrderByIdReport(+orderId);
       res.setHeader('Content-Type', 'application/pdf');
       pdfDoc.info.Title = 'Countries Report';
       pdfDoc.pipe(res);
