@@ -20,7 +20,7 @@ export const getDonutChart = async (options: DonutOptions): Promise<string>=> {
         {
         label: 'Dataset 1',
         data:  options.entries.map ((e) => e.value),
-        // backgroundColor: Object.values(Utils.CHART_COLORS),
+        backgroundColor: Object.values(Utils.CHART_COLORS),
         }
     ]
     };
